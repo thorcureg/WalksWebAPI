@@ -1,0 +1,10 @@
+Things to add to POS Backend
+
+Dependency Injection
+ 
+	builder.Services.AddDbContext<DbContextFileName>
+	(
+		options => options.UseSqlServer(builder.Configuration.GetConnectionString("NameOfConnectionString"))
+	); 
+
+

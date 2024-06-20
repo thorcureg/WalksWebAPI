@@ -2,9 +2,28 @@ Things to add to POS Backend
 
 Dependency Injection
  
-	builder.Services.AddDbContext<DbContextFileName>
+	builder.Services.AddDbContext<DBCONTEXTFILENAME>
 	(
 		options => options.UseSqlServer(builder.Configuration.GetConnectionString("NameOfConnectionString"))
 	); 
 
+Using GUID for Ids ( Globally Unique Id )
 
+	public Guid Id { get; set; }
+
+Consider adding [FromBody] [FromRoute] in the Controller Actions
+
+Consider switching to SQL Server 
+
+Make an IRepository/s include 
+	Task<List<NAMEOFENTITY>> GetAllAsync();
+	Task<NAMEOFENTITY?> GetById(Guid Id);
+	Task<NAMEOFENTITY> Create(NAMEOFENTITY nameOFENTITY);
+	Task<NAMEOFENTITY?> Create(Guid Id, NAMEOFENTITY nameOFENTITY);
+
+Use the IRepository in Services before using services inside the controllers
+
+
+Things to take note
+Try not to call the dbContext inside the controller
+DRY - Don't Repeat Yourself

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UdemyWebApi.Data;
@@ -13,12 +14,14 @@ namespace UdemyWebApi.Controllers
     public class RegionsController : ControllerBase
     {
         private readonly DataBContext dbContext;
-        private readonly SQLRegionRepository regionRepository;
+        private readonly IRegionRepository regionRepository;
+        private readonly IMapper mapper;
 
-        public RegionsController(DataBContext dbContext, SQLRegionRepository regionRepository)
+        public RegionsController(DataBContext dbContext, IRegionRepository regionRepository,IMapper mapper)
         {
             this.dbContext = dbContext;
             this.regionRepository = regionRepository;
+            this.mapper = mapper;
         }
 
         //GET ALL REGION 
@@ -30,17 +33,20 @@ namespace UdemyWebApi.Controllers
             var regionsEntity = await regionRepository.GetAllAsync();
 
             //Map Domain Models to Dtos
-            var regionsDto = new List<RegionDto>();
-            foreach (var regionEntity in regionsEntity)
-            {
-                regionsDto.Add(new RegionDto()
-                {
-                    Id = regionEntity.Id,
-                    Code = regionEntity.Code,
-                    Name = regionEntity.Name,
-                    RegionImageUrl = regionEntity.RegionImageUrl
-                });
-            }
+            mapper.Map<List<RegionDto>>(regionsEntity);
+
+            //var regionsDto = new List<RegionDto>();
+            //foreach (var regionEntity in regionsEntity)
+            //{
+            //    regionsDto.Add(new RegionDto()
+            //    {
+            //        Id = regionEntity.Id,
+            //        Code = regionEntity.Code,
+            //        Name = regionEntity.Name,
+            //        RegionImageUrl = regionEntity.RegionImageUrl
+            //    });
+            //}
+
 
             return Ok(regionsEntity);
         }
@@ -48,7 +54,7 @@ namespace UdemyWebApi.Controllers
         //GET SINGLE REGION 
         //https://localhost:portnumber/api/regions/{id}
         [HttpGet("{id:Guid}")]
-        public async Task <IActionResult> GetRegionById([FromRoute] Guid id)
+        public async Task<IActionResult> GetRegionById([FromRoute] Guid id)
         {
             var regionEntity = await regionRepository.GetByIdAsync(id);
             if (regionEntity == null)
@@ -57,14 +63,17 @@ namespace UdemyWebApi.Controllers
             }
 
             //Map Region Domain Model to Region Dto
-            var regionDto = new RegionDto()
-            {
-                Id = regionEntity.Id,
-                Code = regionEntity.Code,
-                Name = regionEntity.Name,
-                RegionImageUrl = regionEntity.RegionImageUrl
-            };
-            return Ok(regionEntity);
+            
+            //var regionDto = new RegionDto()
+            //{
+            //    Id = regionEntity.Id,
+            //    Code = regionEntity.Code,
+            //    Name = regionEntity.Name,
+            //    RegionImageUrl = regionEntity.RegionImageUrl
+            //};
+            return Ok(mapper.Map<RegionDto>(regionEntity));
+
+            
         }
 
         //POST NEW REGION
@@ -73,22 +82,25 @@ namespace UdemyWebApi.Controllers
         public async Task <IActionResult> PostRegion([FromBody] CreateRegionDto createregionDto)
         {
             //Map DTO to entity
-            var regionEntity = new Region
-            {
-                Code = createregionDto.Code,
-                Name = createregionDto.Name,
-                RegionImageUrl = createregionDto.RegionImageUrl
+            var regionEntity = mapper.Map<Region>(createregionDto);
+            //var regionEntity = new Region
+            //{
+            //    Code = createregionDto.Code,
+            //    Name = createregionDto.Name,
+            //    RegionImageUrl = createregionDto.RegionImageUrl
 
-            };
+            //};
             regionEntity = await regionRepository.CreateAsync(regionEntity);
+
             //Use Domain model back to dto
-            var regionDto = new RegionDto
-            {
-                Id = regionEntity.Id,
-                Code = regionEntity.Code,
-                Name = regionEntity.Name,
-                RegionImageUrl = regionEntity.RegionImageUrl
-            };
+            var regionDto = mapper.Map<RegionDto>(regionEntity);
+            //var regionDto = new RegionDto
+            //{
+            //    Id = regionEntity.Id,
+            //    Code = regionEntity.Code,
+            //    Name = regionEntity.Name,
+            //    RegionImageUrl = regionEntity.RegionImageUrl
+            //};
             return CreatedAtAction(nameof(GetRegionById), new { id = regionDto.Id }, regionDto);
         }
         
@@ -99,36 +111,30 @@ namespace UdemyWebApi.Controllers
         public async Task <IActionResult> UpdateRegion([FromRoute] Guid id, [FromBody] UpdateRegionDto updateRegionDto)
         {
             //Map Dto to Entity
-            var regionEntity = new Region
-            {
-                Code = updateRegionDto.Code,
-                Name = updateRegionDto.Name,
-                RegionImageUrl = updateRegionDto.RegionImageUrl
-            };
+            var regionEntity = mapper.Map<Region>(updateRegionDto);
+            //var regionEntity = new Region
+            //{
+            //    Code = updateRegionDto.Code,
+            //    Name = updateRegionDto.Name,
+            //    RegionImageUrl = updateRegionDto.RegionImageUrl
+            //};
 
+            //Validation
             regionEntity = await regionRepository.UpdateAsync(id, regionEntity);
             if (regionEntity == null)
             {
                 return NotFound();
             }
-
-            //Map Dto to Entity
-            regionEntity.Code = updateRegionDto.Code;
-            regionEntity.Name = updateRegionDto.Name;
-            regionEntity.RegionImageUrl = updateRegionDto.RegionImageUrl;
-
-            await dbContext.SaveChangesAsync();
-
             //Convert Entity Model to Dto
-            var regionDto = new RegionDto
-            {
-                Id = regionEntity.Id,
-                Code = regionEntity.Code,
-                Name = regionEntity.Name,
-                RegionImageUrl = regionEntity.RegionImageUrl
-            };
+            //var regionDto = new RegionDto
+            //{
+            //    Id = regionEntity.Id,
+            //    Code = regionEntity.Code,
+            //    Name = regionEntity.Name,
+            //    RegionImageUrl = regionEntity.RegionImageUrl
+            //};
 
-            return Ok(regionDto);
+            return Ok(mapper.Map<RegionDto>(regionEntity));
         }
         
         //DELETE EXISTING
@@ -147,15 +153,15 @@ namespace UdemyWebApi.Controllers
             //return deleted region
             //map domain to dto
 
-            var regionDto = new RegionDto()
-            {
-                Id = region.Id,
-                Code = region.Code,
-                Name = region.Name,
-                RegionImageUrl = region.RegionImageUrl
-            };
+            //var regionDto = new RegionDto()
+            //{
+            //    Id = region.Id,
+            //    Code = region.Code,
+            //    Name = region.Name,
+            //    RegionImageUrl = region.RegionImageUrl
+            //};
 
-            return Ok(regionDto);
+            return Ok(mapper.Map<RegionDto>(region));
         }
 
     }

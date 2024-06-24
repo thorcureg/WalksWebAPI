@@ -23,7 +23,14 @@ Make an IRepository/s include
 
 Use the IRepository in Services before using services inside the controllers
 
+Consider using reversemap in Automapper Config
+
 
 Things to take note
 Try not to call the dbContext inside the controller
 DRY - Don't Repeat Yourself
+In Automapper configurations CreateMap<SOURCE, DESTINATION>;
+Use of opt.MapFrom() - to define where we map the value from
+	example: .ForMember(x=>x.Name, option=>opt. MapFrom(x=>x.FullName))
+Note that if when mapping
+	mapper.Map<DESTINATION>(SOURCE)

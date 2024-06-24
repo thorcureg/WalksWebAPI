@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using UdemyWebApi.Data;
+using UdemyWebApi.Mappings;
 using UdemyWebApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,10 +13,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
 
 builder.Services.AddDbContext<DataBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnectionString")));
+
+builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 
 var app = builder.Build();

@@ -1,0 +1,24 @@
+2024-07-03 11:42:55.745 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:7051/api/Regions/5d50cf76-9305-41dd-d333-08dc9b0d22b3 - null null
+2024-07-03 11:42:55.760 +08:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Reader)
+2024-07-03 11:42:55.763 +08:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-03 11:42:55.766 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:7051/api/Regions/5d50cf76-9305-41dd-d333-08dc9b0d22b3 - 401 0 null 20.3134ms
+2024-07-03 11:42:56.215 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/swagger/index.html - null null
+2024-07-03 11:42:56.228 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/swagger/index.html - 200 null text/html;charset=utf-8 13.2594ms
+2024-07-03 11:42:56.252 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/_vs/browserLink - null null
+2024-07-03 11:42:56.253 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-03 11:42:56.259 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.7669ms
+2024-07-03 11:42:56.265 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.7499ms
+2024-07-03 11:42:56.348 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/swagger/v1/swagger.json - null null
+2024-07-03 11:42:56.362 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.7797ms
+2024-07-03 11:42:58.988 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:7051/api/Regions/5d50cf76-9305-41dd-d333-08dc9b0d22b3 - null null
+2024-07-03 11:42:58.992 +08:00 [INF] Executing endpoint 'UdemyWebApi.Controllers.RegionsController.GetRegionById (UdemyWebApi)'
+2024-07-03 11:42:59.004 +08:00 [INF] Route matched with {action = "GetRegionById", controller = "Regions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRegionById(System.Guid) on controller UdemyWebApi.Controllers.RegionsController (UdemyWebApi).
+2024-07-03 11:42:59.146 +08:00 [INF] Executed DbCommand (16ms) [Parameters=[@__Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Code], [r].[Name], [r].[RegionImageUrl]
+FROM [Regions] AS [r]
+WHERE [r].[Id] = @__Id_0
+2024-07-03 11:42:59.151 +08:00 [INF] Executing OkObjectResult, writing value of type 'UdemyWebApi.Models.DTO.RegionDto'.
+2024-07-03 11:42:59.153 +08:00 [INF] Executed action UdemyWebApi.Controllers.RegionsController.GetRegionById (UdemyWebApi) in 145.616ms
+2024-07-03 11:42:59.154 +08:00 [INF] Executed endpoint 'UdemyWebApi.Controllers.RegionsController.GetRegionById (UdemyWebApi)'
+2024-07-03 11:42:59.156 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:7051/api/Regions/5d50cf76-9305-41dd-d333-08dc9b0d22b3 - 200 null application/json; charset=utf-8 168.3709ms

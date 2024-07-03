@@ -1,0 +1,30 @@
+2024-07-03 13:32:47.874 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/swagger/index.html - null null
+2024-07-03 13:32:47.892 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/swagger/index.html - 200 null text/html;charset=utf-8 17.9591ms
+2024-07-03 13:32:47.931 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:7051/api/Regions - null null
+2024-07-03 13:32:47.934 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/_vs/browserLink - null null
+2024-07-03 13:32:47.936 +08:00 [INF] Executing endpoint 'UdemyWebApi.Controllers.RegionsController.GetAllRegions (UdemyWebApi)'
+2024-07-03 13:32:47.939 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-03 13:32:47.949 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 10.3583ms
+2024-07-03 13:32:47.960 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.7349ms
+2024-07-03 13:32:47.960 +08:00 [INF] Route matched with {action = "GetAllRegions", controller = "Regions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllRegions() on controller UdemyWebApi.Controllers.RegionsController (UdemyWebApi).
+2024-07-03 13:32:47.975 +08:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[Code], [r].[Name], [r].[RegionImageUrl]
+FROM [Regions] AS [r]
+2024-07-03 13:32:47.980 +08:00 [INF] Finished GetAllRegions Action with data: [{"Id":"906cb139-415a-4bbb-a174-1a1faf9fb1f6","Code":"NSN","Name":"Nelson","RegionImageUrl":"https://images.pexels.com/photos/13918194/pexels-photo-13918194.jpeg?auto=compress\u0026cs=tinysrgb\u0026w=1260\u0026h=750\u0026dpr=1"},{"Id":"f7248fc3-2585-4efb-8d1d-1c555f4087f6","Code":"AKL","Name":"Auckland","RegionImageUrl":"https://images.pexels.com/photos/5169056/pexels-photo-5169056.jpeg?auto=compress\u0026cs=tinysrgb\u0026w=1260\u0026h=750\u0026dpr=1"},{"Id":"14ceba71-4b51-4777-9b17-46602cf66153","Code":"BOP","Name":"Bay Of Plenty","RegionImageUrl":null},{"Id":"6884f7d7-ad1f-4101-8df3-7a6fa7387d81","Code":"NTL","Name":"Northland","RegionImageUrl":null},{"Id":"f077a22e-4248-4bf6-b564-c7cf4e250263","Code":"STL","Name":"Southland","RegionImageUrl":null},{"Id":"cfa06ed2-bf65-4b65-93ed-c9d286ddb0de","Code":"WGN","Name":"Wellington","RegionImageUrl":"https://images.pexels.com/photos/4350631/pexels-photo-4350631.jpeg?auto=compress\u0026cs=tinysrgb\u0026w=1260\u0026h=750\u0026dpr=1"}]
+2024-07-03 13:32:47.982 +08:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UdemyWebApi.Models.Domain.Region, UdemyWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-07-03 13:32:47.984 +08:00 [INF] Executed action UdemyWebApi.Controllers.RegionsController.GetAllRegions (UdemyWebApi) in 17.8741ms
+2024-07-03 13:32:47.985 +08:00 [INF] Executed endpoint 'UdemyWebApi.Controllers.RegionsController.GetAllRegions (UdemyWebApi)'
+2024-07-03 13:32:47.988 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:7051/api/Regions - 200 null application/json; charset=utf-8 57.5049ms
+2024-07-03 13:32:48.133 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/swagger/v1/swagger.json - null null
+2024-07-03 13:32:48.144 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 10.9721ms
+2024-07-03 13:32:48.567 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:7051/api/Regions/906cb139-415a-4bbb-a174-1a1faf9fb1f6 - null null
+2024-07-03 13:32:48.571 +08:00 [INF] Executing endpoint 'UdemyWebApi.Controllers.RegionsController.GetRegionById (UdemyWebApi)'
+2024-07-03 13:32:48.580 +08:00 [INF] Route matched with {action = "GetRegionById", controller = "Regions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRegionById(System.Guid) on controller UdemyWebApi.Controllers.RegionsController (UdemyWebApi).
+2024-07-03 13:32:48.588 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Code], [r].[Name], [r].[RegionImageUrl]
+FROM [Regions] AS [r]
+WHERE [r].[Id] = @__Id_0
+2024-07-03 13:32:48.590 +08:00 [INF] Executing OkObjectResult, writing value of type 'UdemyWebApi.Models.DTO.RegionDto'.
+2024-07-03 13:32:48.593 +08:00 [INF] Executed action UdemyWebApi.Controllers.RegionsController.GetRegionById (UdemyWebApi) in 11.1879ms
+2024-07-03 13:32:48.595 +08:00 [INF] Executed endpoint 'UdemyWebApi.Controllers.RegionsController.GetRegionById (UdemyWebApi)'
+2024-07-03 13:32:48.597 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:7051/api/Regions/906cb139-415a-4bbb-a174-1a1faf9fb1f6 - 200 null application/json; charset=utf-8 30.4436ms

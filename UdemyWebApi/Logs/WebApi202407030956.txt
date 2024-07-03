@@ -1,0 +1,14 @@
+2024-07-03 09:56:27.417 +08:00 [INF] User profile is available. Using 'C:\Users\cureg\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-03 09:56:27.619 +08:00 [INF] Now listening on: https://localhost:7051
+2024-07-03 09:56:27.621 +08:00 [INF] Now listening on: http://localhost:5164
+2024-07-03 09:56:27.623 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-03 09:56:27.624 +08:00 [INF] Hosting environment: Development
+2024-07-03 09:56:27.624 +08:00 [INF] Content root path: C:\Users\cureg\Desktop\playground\UdemyWebAPI\UdemyWebApi
+2024-07-03 09:56:28.502 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/swagger/index.html - null null
+2024-07-03 09:56:28.740 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/swagger/index.html - 200 null text/html;charset=utf-8 240.5974ms
+2024-07-03 09:56:28.753 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-03 09:56:28.758 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.4683ms
+2024-07-03 09:56:28.878 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/_vs/browserLink - null null
+2024-07-03 09:56:28.938 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/_vs/browserLink - 200 null text/javascript; charset=UTF-8 59.706ms
+2024-07-03 09:56:29.018 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7051/swagger/v1/swagger.json - null null
+2024-07-03 09:56:29.172 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7051/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 154.6932ms

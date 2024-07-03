@@ -25,6 +25,44 @@ Use the IRepository in Services before using services inside the controllers
 
 Consider using reversemap in Automapper Config
 
+Check if we can apply seeding  
+
+Consider using ModelState and Validations
+
+Consider Adding CustomActionsFilter for ModelState Validation
+
+Consider Adding Filtering 
+
+Consider Adding Sorting 
+
+Consider Adding Pagination
+
+When adding Authentication and Authorization
+	use this in package manager console
+	(
+	Install-Package Microsoft.AspNetCore.Authentication.JwtBearer
+	Install-Package Microsoft.IdentityModel.Tokens
+	Install-Package System.IdentityModel.Tokens.Jwt
+	Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+	)
+When adding Logging
+	use this in package manager console
+	(
+	Serilog
+	Serilog.AspNet.Core
+	Serilog.Sinks.Console
+	Serilog.Sinks.File
+	)
+When adding Versioning
+	use this in package manager console
+	(
+	Microsoft.Aspnetcore.Mvc.Versioning
+
+	)
+
+
+
+
 
 Things to take note
 Try not to call the dbContext inside the controller
@@ -34,3 +72,4 @@ Use of opt.MapFrom() - to define where we map the value from
 	example: .ForMember(x=>x.Name, option=>opt. MapFrom(x=>x.FullName))
 Note that if when mapping
 	mapper.Map<DESTINATION>(SOURCE)
+
